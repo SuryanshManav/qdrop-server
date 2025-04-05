@@ -5,7 +5,11 @@ const db = require('./database');
 
 app.use(express.json());
 
-const port = 3000;
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
 app.post('/getAppletConfig', async (req, res) => {
     try {
       const qrCodeData = req.body.qrCodeData;
@@ -20,8 +24,4 @@ app.post('/getAppletConfig', async (req, res) => {
       console.error(err);
       res.status(500).json({ message: 'Internal Server Error' });
     }
-  });  
-
-app.listen(port, () => {
-  console.log(`Server running remotely:${port}`);
-});
+  }); 

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const mongoDB = 'mongodb://localhost:27017/QDrop'; // Replace with your MongoDB URL
+const mongoDB = 'mongodb+srv://manavsuryansh2002:JDRp9iAnZFdAEetn@qdrop-server.8mfvjwi.mongodb.net/';
 
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))

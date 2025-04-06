@@ -16,6 +16,7 @@ app.post('/getAppletConfig', async (req, res) => {
       const appletConfig = await Applet.find({ qrCodeData : qrCodeDataReq });
       if (appletConfig) {
         console.log("It works");
+        console.log(appletConfig);
         res.json(appletConfig);
       } else {
         res.status(404).json({ message: 'Applet not found' });

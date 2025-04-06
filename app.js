@@ -13,14 +13,8 @@ app.listen(PORT, () => {
 
 app.post('/getAppletConfig', async (req, res) => {
     try {
-      console.log('Trying to connect to MongoDB...');
-      const collection = mongoose.connection.collection('appConfigs');
-      const result = await collection.find().toArray();
-      console.log(result);
-      console.log('Connection status:', db.readyState);
-      
       const qrCodeDataReq = req.body.qrCodeData;
-      const appletConfig = await Applet.find();
+      const appletConfig = await Applet.findOne({qrCodeData: qrCodeDataReq});
       if (appletConfig) {
         console.log("It works");
         console.log(appletConfig);

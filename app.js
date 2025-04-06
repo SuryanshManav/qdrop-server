@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const Applet = require('./applet.model');
 const db = require('./database');
-const mongoose = mongoose();
+const mongoose = require('mongoose');
 
 app.use(express.json());
 

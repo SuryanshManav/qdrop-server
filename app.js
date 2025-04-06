@@ -12,8 +12,8 @@ app.listen(PORT, () => {
 
 app.post('/getAppletConfig', async (req, res) => {
     try {
-      const qrCodeData = req.body.qrCodeData;
-      const appletConfig = await Applet.findOne({ "qrCodeData" : qrCodeData });
+      const qrCodeDataReq = req.body.qrCodeData;
+      const appletConfig = await Applet.findOne({ qrCodeData : qrCodeDataReq });
       if (appletConfig) {
         console.log("It works");
         res.json(appletConfig);

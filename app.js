@@ -3,6 +3,7 @@ const app = express();
 const Applet = require('./applet.model');
 const db = require('./database');
 const mongoose = require('mongoose');
+const AppInteraction = require('./appInteraction.model');
 
 app.use(express.json());
 
@@ -26,4 +27,22 @@ app.post('/getAppletConfig', async (req, res) => {
       console.error(err);
       res.status(500).json({ message: 'Internal Server Error' });
     }
-  }); 
+  });
+  
+  app.post('/postAppletInteraction', async (req, res) => {
+    try {
+      const { appletNumber, dropdownValue, textboxValue } = req.body;
+
+      const newInteraction = new AppInteraction({
+        appletNumber,
+        dropdownValue,
+        textboxValue
+      });
+
+      await newInteraction.save();
+      res.status(201).json({ message: 'Interaction saved successfully' });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
+  });
